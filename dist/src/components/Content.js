@@ -10,7 +10,7 @@ function Content() {
     //setCountries(countryArr);
     //console.log(`data is ${data}`);
     let countryDetails = countryArr.filter(
-      (country) => country.region === "europe"
+      (country) => country.name === "Netherlands"
     );
     const borders = JSON.stringify(countryDetails, null, 4);
 
