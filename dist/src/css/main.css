@@ -1,0 +1,67 @@
+html {
+  font-family: "Nunito", sans-serif;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+@media (min-width: 1440px) {
+  .wrapper {
+    margin: 0 10%;
+  }
+}
+
+.wrapper .header {
+  display: -ms-grid;
+  display: grid;
+}
+
+@media (min-width: 1440px) {
+  .wrapper .header {
+    -ms-grid-columns: auto auto;
+        grid-template-columns: auto auto;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.wrapper .content {
+  display: -ms-grid;
+  display: grid;
+}
+
+@media (min-width: 1440px) {
+  .wrapper .content {
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.wrapper .country-card > div {
+  display: -ms-grid;
+  display: grid;
+}
+
+@media (min-width: 1440px) {
+  .wrapper .country-card > div {
+    -ms-grid-columns: auto auto;
+        grid-template-columns: auto auto;
+  }
+}
+
+.wrapper .country-card > div .part1,
+.wrapper .country-card > div .part2 {
+  display: -ms-grid;
+  display: grid;
+}
+
+.wrapper .country-card > div .part1 label,
+.wrapper .country-card > div .part2 label {
+  font-weight: bold;
+}
+/*# sourceMappingURL=main.css.map */

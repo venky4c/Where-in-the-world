@@ -1,0 +1,94 @@
+$colors: (
+  --darkBlue: hsl(209, 23%, 22%),
+  --veryDarkBlue: hsl(207, 26%, 17%),
+  --veryDarkBlueLightModeText: hsl(200, 15%, 8%),
+  --darkGrayLightModeInput: hsl(0, 0%, 52%),
+  --veryLightGrayLightModeBg: hsl(0, 0%, 98%),
+  --whiteDarkModeText&LightModeElements: hsl(0, 0%, 100%),
+  //   --darBlue (Dark Mode Elements): hsl(209, 23%, 22%)
+    // - Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
+    // - Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
+    // - Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
+    // - Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
+    // - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%),,,,,,,,,,,,,,,,,
+);
+
+$fonts: (
+  --poppins: "Poppins",
+);
+
+$fontSize: 18px;
+$fontText: 300;
+$fontHeading: 600;
+$fontHero: 800;
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@function font($font-name) {
+  @return map-get($fonts, $font-name);
+}
+$desktop: 1440px;
+$mobile: 375px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: #{$mobile}) {
+    @content;
+  }
+}
+
+html {
+  font-family: "Nunito", sans-serif;
+}
+
+.wrapper {
+  margin: 0 auto;
+
+  @include desktop {
+    margin: 0 10%;
+  }
+
+  .header {
+    display: grid;
+
+    @include desktop {
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+    }
+  } // end of Header
+
+  .content {
+    display: grid;
+
+    @include desktop {
+      grid-template-columns: auto auto auto;
+      justify-content: space-between;
+    }
+  } //end of Content
+
+  .country-card > div {
+    display: grid;
+
+    @include desktop {
+      grid-template-columns: auto auto;
+    }
+
+    .part1,
+    .part2 {
+      display: grid;
+
+      @include desktop {
+      }
+      label {
+        font-weight: bold;
+      }
+    }
+  }
+} // end of wrapper
