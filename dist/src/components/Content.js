@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import * as actions from "../redux/actions";
+import { useDispatch } from "react-redux";
 
 function Content() {
   const urlAll = "https://restcountries.eu/rest/v2/all";
@@ -16,6 +18,10 @@ function Content() {
 
     console.log(`borders is ${borders}`);
   };
+  const dispatch = useDispatch();
+
+  //dispatch(actions.searchCountry("In"));
+
   return (
     <div className="content">
       <input
@@ -24,7 +30,9 @@ function Content() {
         placeholder="Search for a country"
         //onChange={(event) => getData(event)}
       />
-      <button onClick={getCountries}>Fetch</button>
+      <button onClick={() => dispatch(actions.searchCountry("In"))}>
+        Fetch
+      </button>
       <select name="continents" id="">
         <option value="Filter by Region" selected>
           Filter by Region
