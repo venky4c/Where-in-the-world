@@ -8,7 +8,7 @@ html {
 
 @media (min-width: 1440px) {
   .wrapper {
-    margin: 0 10%;
+    margin: 0 20%;
   }
 }
 
@@ -42,26 +42,71 @@ html {
   }
 }
 
-.wrapper .country-card > div {
+.wrapper .country-mini-card {
   display: -ms-grid;
   display: grid;
 }
 
 @media (min-width: 1440px) {
-  .wrapper .country-card > div {
+  .wrapper .country-mini-card {
+    display: inline-block;
+    margin: 4%;
+  }
+}
+
+.wrapper .country-mini-card div {
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+}
+
+@media (min-width: 1440px) {
+  .wrapper .country-mini-card div {
+    display: block;
+  }
+}
+
+.wrapper .country-mini-card div img {
+  height: 4rem;
+  width: 8rem;
+}
+
+@media (min-width: 1440px) {
+  .wrapper .country-mini-card div img {
+    height: 6rem;
+    width: 12rem;
+  }
+}
+
+.wrapper .country-mini-card div label {
+  font-weight: bold;
+}
+
+@media (min-width: 1440px) {
+  .wrapper .country-card img {
+    height: 6rem;
+    width: 12rem;
+  }
+}
+
+.wrapper .country-card div {
+  display: -ms-grid;
+  display: grid;
+}
+
+@media (min-width: 1440px) {
+  .wrapper .country-card div {
     -ms-grid-columns: auto auto;
         grid-template-columns: auto auto;
   }
 }
 
-.wrapper .country-card > div .part1,
-.wrapper .country-card > div .part2 {
+.wrapper .country-card div .part1 {
   display: -ms-grid;
   display: grid;
 }
 
-.wrapper .country-card > div .part1 label,
-.wrapper .country-card > div .part2 label {
+.wrapper .country-card div .part1 label {
   font-weight: bold;
 }
 /*# sourceMappingURL=main.css.map */

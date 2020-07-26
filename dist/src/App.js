@@ -1,9 +1,8 @@
 import React from "react";
 import Header from "./components/Header";
 import Content from "./components/Content";
-import CountryCard from "./components/CountryCard";
+import CountryMiniCard from "./components/CountryMiniCard";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "./redux";
 import { useEffect } from "react";
 import * as actions from "./redux/actions";
 
@@ -23,7 +22,7 @@ function App(props) {
         <Header />
         <Content />
         {countriesList.map((country) => (
-          <CountryCard {...country} />
+          <CountryMiniCard {...country} />
         ))}
       </div>
     </div>

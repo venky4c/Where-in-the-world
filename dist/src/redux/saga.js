@@ -6,7 +6,7 @@ import { fetchAllCountries, searchForCountries } from "./services";
 function* fetchCountries(action) {
   try {
     const COUNTRIES = yield fetchAllCountries();
-    console.log("FROM sage", COUNTRIES);
+    //console.log("FROM sage", COUNTRIES);
     yield put({
       type: actions.FETCHED_ALL_COUNTRIES_WITH_SUCCESS,
       payload: COUNTRIES,
@@ -17,7 +17,7 @@ function* fetchCountries(action) {
 function* searchForCountriesSaga(action) {
   try {
     const COUNTRIES = yield searchForCountries(action.payload);
-    console.log("FROM saga", COUNTRIES);
+    //console.log("FROM saga", COUNTRIES);
     yield put({
       type: actions.SEARCHED_COUNTRY_WITH_SUCCESS,
       payload: COUNTRIES,

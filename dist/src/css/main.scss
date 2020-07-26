@@ -10,7 +10,7 @@ $colors: (
     // - Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
     // - Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
     // - Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
-    // - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%),,,,,,,,,,,,,,,,,
+    // - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 );
 
 $fonts: (
@@ -52,7 +52,7 @@ html {
   margin: 0 auto;
 
   @include desktop {
-    margin: 0 10%;
+    margin: 0 20%;
   }
 
   .header {
@@ -72,23 +72,63 @@ html {
       justify-content: space-between;
     }
   } //end of Content
-
-  .country-card > div {
+  //-------------------- COUNTRY-MINI-CARD STYLES -----------------
+  .country-mini-card {
     display: grid;
 
     @include desktop {
-      grid-template-columns: auto auto;
+      display: inline-block;
+      margin: 4%;
+      //grid-template-columns: auto auto;
     }
 
-    .part1,
-    .part2 {
+    div {
       display: grid;
+      place-content: center;
 
       @include desktop {
+        display: block;
+        //grid-template-rows: auto auto;
+      }
+      img {
+        height: 4rem;
+        width: 8rem;
+        @include desktop {
+          height: 6rem;
+          width: 12rem;
+        }
       }
       label {
         font-weight: bold;
       }
     }
   }
+
+  // -------------------- COUNTRY-CARD STYLES BEGIN ---------------------
+  .country-card {
+    img {
+      @include desktop {
+        height: 6rem;
+        width: 12rem;
+      }
+    }
+    div {
+      display: grid;
+
+      @include desktop {
+        grid-template-columns: auto auto;
+      }
+
+      .part1 {
+        display: grid;
+
+        @include desktop {
+        }
+        label {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  // end of Country-card
 } // end of wrapper

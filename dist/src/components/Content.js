@@ -30,7 +30,7 @@ function Content() {
         placeholder="Search for a country"
         //onChange={(event) => getData(event)}
       />
-      <button onClick={() => dispatch(actions.searchCountry("In"))}>
+      <button onClick={() => dispatch(actions.searchCountry("India"))}>
         Fetch
       </button>
       <select name="continents" id="">

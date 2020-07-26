@@ -11,5 +11,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-
-//ReactDOM.render(<Main />, document.getElementById("root"));
