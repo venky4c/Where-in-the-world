@@ -13,6 +13,9 @@ const countries = (state = initialState, action) => {
     case actions.SEARCH_COUNTRY:
       //console.log("payload is", action.payload);
       return { ...state, loading: true };
+    case actions.SEARCHED_COUNTRY_WITH_SUCCESS:
+      console.log("payload from reducer is", action.payload);
+      return { ...state, countriesList: action.payload, loading: false };
 
     default:
       return state;

@@ -1,6 +1,9 @@
 import React from "react";
+import { ThemeContext } from "../themeContext";
+import { useContext } from "react";
 
 const CountryMiniCard = (props) => {
+  const { theme } = useContext(ThemeContext);
   const { flag, name, population, region, capital } = props;
   // currencies.map((value) => {
   //   return console.log("value is ", Object.values[0].name);
@@ -9,7 +12,7 @@ const CountryMiniCard = (props) => {
   const baseUrl = "https://restcountries.eu/data/";
   const flagName = flag.slice(baseUrl.length, flag.length);
   return (
-    <div className="country-mini-card">
+    <div className={`${theme}-theme`} id="country-mini-card">
       <div className="country-details">
         <img src={`${baseUrl.concat(flagName)}`} alt="dummy" />
         <h2>{name}</h2>

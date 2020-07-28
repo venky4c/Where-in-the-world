@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import * as services from "../redux/services";
+import { ThemeContext } from "../themeContext";
 
 const CountryCard = (props) => {
-  //console.log(props);
+  const { theme } = useContext(ThemeContext);
   const {
     flag,
     name,
@@ -16,13 +18,14 @@ const CountryCard = (props) => {
     borders,
   } = props;
   // currencies.map((value) => {
-  //   return console.log("value is ", Object.values[0].name);
+  //   return console.log("currency value is ", value.name);
   //   //console.log('index is ', index);
   // });
   const baseUrl = "https://restcountries.eu/data/";
   const flagName = flag.slice(baseUrl.length, flag.length);
+
   return (
-    <div className="country-card">
+    <div className={`${theme}-theme`} id="country-card">
       <img src={`${baseUrl.concat(flagName)}`} alt="dummy" />
       <h2>{name}</h2>
       <div className="country-details">
@@ -54,43 +57,21 @@ const CountryCard = (props) => {
             <label htmlFor="">Top Level Domain: </label>
             {topLevelDomain}
           </p>
+          <p className="span-arr">
+            <label className="currencies">Currencies: </label>
+            {currencies.map((value, index) => value.name + " ")}{" "}
+          </p>
+          <p>
+            <label className="languages">Languages: </label>
+            {languages.map((value, index) => value.name + " ")}
+          </p>
           {/* <p>
-            <label htmlFor="">Currency: </label>
-            {currencies[1]}
+            <label>Borders: </label>
+            {borders.map((value) => (
+              <p>{services.getCountryNameByCode(value)}</p>
+            ))}
           </p> */}
         </section>
-        <section>
-          <span className="span-arr">
-            {/* {currencies.map((value, index) => (
-              <button
-                className="right attached ui button"
-                key={index}
-                value={value}
-                onClick={(e) => props.onFilterButtonClicked(e.target.value)}
-              >
-                {value}
-              </button>
-            ))}
-
-            {languages.map((value, index) => (
-              <button
-                className="right attached ui button"
-                key={index}
-                value={value}
-                onClick={(e) => props.onFilterButtonClicked(e.target.value)}
-              >
-                {value}
-              </button>
-            ))} */}
-          </span>
-        </section>
-        <section className="borders">Borders</section>
-        <p>
-          {borders.map((i) => {
-            return console.log("value of i ", i);
-            //<button>{i}</button>
-          })}
-        </p>
       </div>
     </div>
   );
