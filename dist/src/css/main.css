@@ -3,13 +3,13 @@ html {
 }
 
 .dark-theme {
-  color: whitesmoke;
-  background-color: darkgray;
+  color: white;
+  background-color: #2b3945;
 }
 
 .light-theme {
-  color: darkgray;
-  background-color: whitesmoke;
+  color: #111517;
+  background-color: #fafafa;
 }
 
 .wrapper {
@@ -25,6 +25,12 @@ html {
 .wrapper #header {
   display: -ms-grid;
   display: grid;
+}
+
+@media (min-width: 1440px) {
+  .wrapper #header h1 {
+    font-weight: 800;
+  }
 }
 
 @media (min-width: 1440px) {
@@ -93,37 +99,82 @@ html {
   }
 }
 
+.wrapper #country-mini-card div h2 {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+}
+
 .wrapper #country-mini-card div label {
   font-weight: bold;
 }
 
-@media (min-width: 1440px) {
-  .wrapper #country-card img {
-    height: 6rem;
-    width: 12rem;
-  }
-}
-
-.wrapper #country-card div {
+.wrapper #country-card {
   display: -ms-grid;
   display: grid;
 }
 
 @media (min-width: 1440px) {
-  .wrapper #country-card div {
+  .wrapper #country-card {
+    -ms-grid-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.wrapper #country-card .flag {
+  display: -ms-grid;
+  display: grid;
+}
+
+@media (min-width: 1440px) {
+  .wrapper #country-card .flag {
+    place-content: center;
+  }
+}
+
+@media (min-width: 1440px) {
+  .wrapper #country-card .flag img {
+    height: 100%;
+    width: 24rem;
+  }
+}
+
+.wrapper #country-card .other-details {
+  display: -ms-grid;
+  display: grid;
+}
+
+@media (min-width: 1440px) {
+  .wrapper #country-card .other-details {
+    -ms-grid-rows: auto auto auto;
+        grid-template-rows: auto auto auto;
+  }
+}
+
+.wrapper #country-card .other-details .part2 {
+  display: -ms-grid;
+  display: grid;
+}
+
+@media (min-width: 1440px) {
+  .wrapper #country-card .other-details .part2 {
     -ms-grid-columns: auto auto;
         grid-template-columns: auto auto;
   }
 }
 
-.wrapper #country-card div .part1,
-.wrapper #country-card div .part2 {
+.wrapper #country-card .other-details .part2 .main,
+.wrapper #country-card .other-details .part2 .sub {
   display: -ms-grid;
   display: grid;
 }
 
-.wrapper #country-card div .part1 label,
-.wrapper #country-card div .part2 label {
+.wrapper #country-card .other-details .part2 .main label,
+.wrapper #country-card .other-details .part2 .sub label {
   font-weight: bold;
+}
+
+.wrapper #country-card .other-details .part3 {
+  display: inline;
 }
 /*# sourceMappingURL=main.css.map */

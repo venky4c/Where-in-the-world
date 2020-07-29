@@ -5,12 +5,15 @@ import { Provider } from "react-redux";
 import store from "./redux/index";
 import App from "./App";
 import { ThemeContextProvider } from "./themeContext";
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
-  <ThemeContextProvider>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </ThemeContextProvider>,
+  <Router>
+    <ThemeContextProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ThemeContextProvider>
+  </Router>,
   document.getElementById("root")
 );

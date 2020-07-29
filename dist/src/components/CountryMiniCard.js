@@ -1,21 +1,40 @@
 import React from "react";
 import { ThemeContext } from "../themeContext";
 import { useContext } from "react";
+import { Link, Switch, Route } from "react-router-dom";
+import CountryCard from "./CountryCard";
 
 const CountryMiniCard = (props) => {
   const { theme } = useContext(ThemeContext);
-  const { flag, name, population, region, capital } = props;
-  // currencies.map((value) => {
-  //   return console.log("value is ", Object.values[0].name);
-  //   //console.log('index is ', index);
-  // });
+  const {
+    flag,
+    name,
+    nativeName,
+    population,
+    region,
+    subregion,
+    capital,
+    topLevelDomain,
+    currencies,
+    languages,
+    borders,
+  } = props;
+
   const baseUrl = "https://restcountries.eu/data/";
   const flagName = flag.slice(baseUrl.length, flag.length);
   return (
     <div className={`${theme}-theme`} id="country-mini-card">
       <div className="country-details">
         <img src={`${baseUrl.concat(flagName)}`} alt="dummy" />
-        <h2>{name}</h2>
+        <Link to="/countrycard">
+          <h2>{name}</h2>
+        </Link>
+        {/* HERE WE NEED TO SHOW ONLY INDIVIDUAL COUNTRY, not the full list */}
+        <Switch>
+          <Route path="/countrycard">
+            <CountryCard />
+          </Route>
+        </Switch>
         <p>
           <label htmlFor="">Population: </label>
           {population}

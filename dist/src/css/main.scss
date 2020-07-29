@@ -1,16 +1,16 @@
 $colors: (
   --darkBlue: hsl(209, 23%, 22%),
-  --veryDarkBlue: hsl(207, 26%, 17%),
-  --veryDarkBlueLightModeText: hsl(200, 15%, 8%),
-  --darkGrayLightModeInput: hsl(0, 0%, 52%),
-  --veryLightGrayLightModeBg: hsl(0, 0%, 98%),
-  --whiteDarkModeText&LightModeElements: hsl(0, 0%, 100%),
-  //   --darBlue (Dark Mode Elements): hsl(209, 23%, 22%)
-    // - Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
-    // - Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
-    // - Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
-    // - Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
-    // - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  // (Dark Mode Elements): hsl(209, 23%, 22%)
+    --veryDarkBlueBg: hsl(207, 26%, 17%),
+  //(Dark Mode Background): hsl(207, 26%, 17%)
+    --veryDarkBlue: hsl(200, 15%, 8%),
+  //(Light Mode Text): hsl(200, 15%, 8%)
+    --darkGrayLightModeInput: hsl(0, 0%, 52%),
+  //  (Light Mode Input): hsl(0, 0%, 52%)
+    --veryLightGray: hsl(0, 0%, 98%),
+  //(Light Mode Background): hsl(0, 0%, 98%)
+    --white: hsl(0, 0%, 100%),
+  //  (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
 );
 
 $fonts: (
@@ -49,12 +49,12 @@ html {
 }
 
 .dark-theme {
-  color: whitesmoke;
-  background-color: darkgray;
+  color: color(--white);
+  background-color: color(--darkBlue);
 }
 .light-theme {
-  color: darkgray;
-  background-color: whitesmoke;
+  color: color(--veryDarkBlue);
+  background-color: color(--veryLightGray);
 }
 .wrapper {
   margin: 0 auto;
@@ -65,7 +65,11 @@ html {
 
   #header {
     display: grid;
-
+    h1 {
+      @include desktop {
+        font-weight: 800;
+      }
+    }
     @include desktop {
       grid-template-columns: auto auto;
       justify-content: space-between;
@@ -110,35 +114,68 @@ html {
           width: 12rem;
         }
       }
+      h2 {
+        pointer-events: none;
+        cursor: default;
+        text-decoration: none;
+        //color: black;
+      }
       label {
         font-weight: bold;
       }
     }
   }
-
+  // -------------------- COUNTRY-MINI-CARD STYLES END ---------------------
   // -------------------- COUNTRY-CARD STYLES BEGIN ---------------------
   #country-card {
-    img {
+    display: grid;
+
+    @include desktop {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+    .flag {
+      display: grid;
       @include desktop {
-        height: 6rem;
-        width: 12rem;
+        place-content: center;
+      }
+
+      img {
+        //height: 100%;
+        @include desktop {
+          height: 100%;
+          width: 24rem;
+        }
       }
     }
-    div {
+    .other-details {
       display: grid;
-
       @include desktop {
-        grid-template-columns: auto auto;
+        grid-template-rows: auto auto auto;
       }
 
-      .part1,
+      .part1 {
+        h2 {
+        }
+      }
       .part2 {
         display: grid;
-
         @include desktop {
+          grid-template-columns: auto auto;
         }
+        .main,
+        .sub {
+          display: grid;
+
+          @include desktop {
+          }
+          label {
+            font-weight: bold;
+          }
+        }
+      }
+      .part3 {
+        display: inline;
         label {
-          font-weight: bold;
         }
       }
     }
