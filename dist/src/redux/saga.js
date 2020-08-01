@@ -5,6 +5,7 @@ import {
   fetchAllCountries,
   searchForCountries,
   searchForCountriesByRegion,
+  getCountryNameByCode,
 } from "./services";
 
 function* fetchCountries(action) {
@@ -40,10 +41,22 @@ function* searchForCountriesByRegionSaga(action) {
   } catch (error) {}
 }
 
+function* getCountryNameByCodeSaga(action) {
+  try {
+    const COUNTRY = yield getCountryNameByCode(action.payload);
+    console.log("country names from saga", COUNTRY);
+    yield put({
+      type: actions.GOT_COUNTRY_NAME_BY_CODE_WITH_SUCCESS,
+      payload: COUNTRY,
+    });
+  } catch (error) {}
+}
+
 function* mySaga() {
   yield takeLatest(actions.FETCH_ALL_COUNTRIES, fetchCountries);
   yield takeLatest(actions.SEARCH_COUNTRY, searchForCountriesSaga);
   yield takeLatest(actions.SEARCH_REGION, searchForCountriesByRegionSaga);
+  yield takeLatest(actions.GET_COUNTRY_NAME_BY_CODE, getCountryNameByCodeSaga);
 }
 
 export default mySaga;

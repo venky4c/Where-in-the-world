@@ -7,6 +7,9 @@ export const GET_COUNTRY_DETAILS = "GET_COUNTRY_DETAILS";
 export const FETCHED_ALL_COUNTRIES_WITH_SUCCESS =
   "FETCHED_ALL_COUNTRIES_WITH_SUCCESS";
 export const FETCH_ALL_COUNTRIES_FAILURE = "FETCH_ALL_COUNTRIES_FAILURE";
+export const GET_COUNTRY_NAME_BY_CODE = "GET_COUNTRY_NAME_BY_CODE";
+export const GOT_COUNTRY_NAME_BY_CODE_WITH_SUCCESS =
+  "GOT_COUNTRY_NAME_BY_CODE_WITH_SUCCESS";
 
 export function fetchAllCountries() {
   return {
@@ -34,3 +37,10 @@ export function getCountryDetails(countryName) {
     payload: countryName,
   };
 }
+
+// export function getCountryNameByCode(code) {
+//   return {
+//     type: GET_COUNTRY_NAME_BY_CODE,
+//     payload: code,
+//   };
+// }

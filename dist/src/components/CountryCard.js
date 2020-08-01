@@ -21,52 +21,17 @@ const CountryCard = (props) => {
   } = props;
   const [countryBorder, setCountryBorder] = useState([]);
 
-  // const fetchCountryNames = async () => {
-  //   const countryNames = await borders.map(async (value) => {
-  //     console.log("value is from card", value);
-  //     const name = await services.getCountryNameByCode(value);
-  //     return name;
-  //   });
-  //   setCountryBorder(countryNames);
-  // };
-
-  // const fetchCountryNames = () => {
-  //   if (borders) {
-  //     const countryNames = [];
-  //     console.log(`1) borders data --> borders:`, borders);
-  //     borders.foreach((value) => {
-  //       console.log(`2) inside foreach --> value`, value);
-  //       const countryName = services.getCountryNameByCode(value).then((res) => {
-  //         console.log(`3) after countryName --> countryName`, countryName);
-  //         countryNames.push(res);
-  //       });
+  // useEffect(() => {
+  //   const fetchCountryNames = async () => {
+  //     const countryNames = await borders.map(async (value) => {
+  //       const name = await services.getCountryNameByCode(value);
+  //       console.log("names of borders are", name);
+  //       setCountryBorder({ countryNames: [...countryNames, name] });
   //     });
-  //     console.log(`4) after foreach loop --> countryNames`, countryNames);
-  //     setCountryBorder(countryNames);
-  //   }
-  // };
-  // useEffect(
-  //   () => ({
-  //     if(borders) {
-  //       const countryNames = [];
-  //       console.log(`1) borders data --> borders:`, borders);
-  //       borders.foreach((value) => {
-  //         console.log(`2) inside foreach --> value`, value);
-  //         const countryName = services
-  //           .getCountryNameByCode(value)
-  //           .then((res) => {
-  //             console.log(`3) after countryName --> countryName`, countryName);
-  //             countryNames.push(res);
-  //           });
-  //       });
-  //       console.log(`4) after foreach loop --> countryNames`, countryNames);
-  //       setCountryBorder(countryNames);
-  //     },
-  //   }),
-  //   [borders]
-  // );
-  // //fetchCountryNames();
-  // console.log("countryBorder is now ", countryBorder);
+  //   };
+  //   fetchCountryNames();
+  // }, [borders]);
+  //  console.log("Border names are", countryBorder);
   return (
     <div className={`${theme}-theme`} id="country-card">
       <div className="flag">
@@ -106,25 +71,22 @@ const CountryCard = (props) => {
               <label htmlFor="">Top Level Domain: </label>
               {topLevelDomain}
             </p>
-            {/* <p className="span-arr">
+            <p className="span-arr">
               <label className="currencies">Currencies: </label>
               {currencies.map((value, index) => value.name + " ")}{" "}
             </p>
             <p>
               <label className="languages">Languages: </label>
               {languages.map((value, index) => value.name + " ")}
-            </p> */}
+            </p>
           </section>
         </div>
 
         <div className="part3">
           <label>Borders: </label>
-          {/* <p>
-            <label>Borders: </label>
-            {borders.map((value) => (
-              <p>{services.getCountryNameByCode(value)}</p>
-            ))}
-          </p> */}
+          {borders.map((value) => (
+            <span>{services.getCountryNameByCode(value)}&nbsp;</span>
+          ))}
         </div>
       </div>
     </div>

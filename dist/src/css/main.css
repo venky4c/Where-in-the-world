@@ -175,6 +175,8 @@ html {
 }
 
 .wrapper #country-card .other-details .part3 {
-  display: inline;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=main.css.map */
