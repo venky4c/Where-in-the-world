@@ -10,16 +10,20 @@ function Content() {
   const urlAll = "https://restcountries.eu/rest/v2/all";
   const urlRegion = "https://restcountries.eu/rest/v2/region/{region}";
   const [userInput, setUserInput] = useState("");
+  const [regionInput, setRegionInput] = useState('');
 
   const handleOnChange = (event) => {
     const searchBy = event.target.value;
     setUserInput(searchBy);
   };
   const dispatch = useDispatch();
-  // function handleClick() {
-  //   console.log("country is ", userInput);
-  //   dispatch(actions.searchCountry("India"));
-  // }
+   function handleOnSelect(event) {
+     console.log("Region is ", event.target.value);
+     const searchBy = event.target.value;
+     setRegionInput(searchBy)
+     dispatch(actions.searchRegion(searchBy));
+  }
+
   return (
     <div className={`${theme}-theme`} id="content">
       <input
@@ -36,11 +40,11 @@ function Content() {
         <option value="Filter by Region" selected>
           Filter by Region
         </option>
-        <option value="africana">Africana</option>
-        <option value="america">America</option>
-        <option value="asia">Asia</option>
-        <option value="europe">Europe</option>
-        <option value="oceania">Oceania</option>
+        <option value="Africa">Africana</option>
+        <option value="Americas">America</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
       </select>
       {/* <CountryMiniCard {...country} /> */}
     </div>

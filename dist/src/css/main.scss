@@ -134,13 +134,13 @@ html {
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     }
     .flag {
-      display: grid;
+      display: grid;      
       @include desktop {
         place-content: center;
       }
 
       img {
-        //height: 100%;
+        border-color: black;
         @include desktop {
           height: 100%;
           width: 24rem;

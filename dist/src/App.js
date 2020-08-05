@@ -22,8 +22,8 @@ function App(props) {
         <Header />
         <Content />
         {countriesList.map((country) => (
-          <CountryCard {...country} />
-        ))}
+          <CountryMiniCard {...country} />
+        ))}        
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export const fetchAllCountries = async () => {
 };
 
 export const searchForCountries = async (name) => {
-  console.log("From services.js ", name);
+  //console.log("From services.js ", name);
   const response = await fetch(baseUrl + `name/${name}`);
   return response.json();
 };
@@ -21,6 +21,6 @@ export const searchForCountriesByRegion = async (region) => {
 export const getCountryNameByCode = async (code) => {
   const response = await fetch(baseUrl + `alpha/${code}`);
   const country = await response.json();
-  console.log("country names from services ", country);
+  //console.log("country names from services ", country);
   return country.name;
 };

@@ -19,19 +19,25 @@ const CountryCard = (props) => {
     languages,
     borders,
   } = props;
-  const [countryBorder, setCountryBorder] = useState([]);
+  const [countryBorder, setCountryBorder] = useState([]);//state variable to keep track of the borders(neighbouring countries) of selected country
 
-  // useEffect(() => {
-  //   const fetchCountryNames = async () => {
-  //     const countryNames = await borders.map(async (value) => {
-  //       const name = await services.getCountryNameByCode(value);
-  //       console.log("names of borders are", name);
-  //       setCountryBorder({ countryNames: [...countryNames, name] });
-  //     });
-  //   };
-  //   fetchCountryNames();
-  // }, [borders]);
-  //  console.log("Border names are", countryBorder);
+  //The borders prop contains a list of bordering countries. But the values of borders array is not 
+  // the country names. Instead it is a 3 letter code representing the country name Ex: 'IND' for India.  
+  //we have a method defined inside the services.js that takes the name of the countryCode and returns
+  // the corresponding country name.
+  const fetchCountryNames = async () => {
+    const countryNames = await borders.map(async (value) => {
+      const name = await services.getCountryNameByCode(value); //this asynchronous call gets us the name of the country given the code
+      //console.log("names of borders are", name); // we want to put these names of countryBorders in any array with same name
+      //setCountryBorder({ countryNames: [...countryNames, name] }); //
+      setCountryBorder(countryNames =>[...countryNames, name])
+
+    });
+  };
+  useEffect(() => {
+    fetchCountryNames();
+  }, [borders]);// we want to get the countrynames of borders whenever the borders prop changes
+    
   return (
     <div className={`${theme}-theme`} id="country-card">
       <div className="flag">
@@ -84,13 +90,12 @@ const CountryCard = (props) => {
 
         <div className="part3">
           <label>Borders: </label>
-          {borders.map((value) => (
-            <span>{services.getCountryNameByCode(value)}&nbsp;</span>
+          {countryBorder.map((value) => (
+            <span>{value}&nbsp;</span>
           ))}
         </div>
       </div>
     </div>
   );
 };
-
 export default CountryCard;

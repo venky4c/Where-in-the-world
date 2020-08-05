@@ -132,6 +132,10 @@ html {
   }
 }
 
+.wrapper #country-card .flag img {
+  border: 1px solid darkblue;
+}
+
 @media (min-width: 1440px) {
   .wrapper #country-card .flag img {
     height: 100%;
