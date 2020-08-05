@@ -36,7 +36,8 @@ function Content() {
       <button onClick={() => dispatch(actions.searchCountry(userInput))}>
         Fetch
       </button>
-      <select name="continents" id="">
+      <select name="continents" id=""
+        value={regionInput} onChange={e =>handleOnSelect(e)}>
         <option value="Filter by Region" selected>
           Filter by Region
         </option>
