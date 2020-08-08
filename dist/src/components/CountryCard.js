@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import * as actions from "../redux/actions";
 import * as services from "../redux/services";
 import { ThemeContext } from "../themeContext";
 import { Link, useParams } from "react-router-dom";
@@ -8,21 +9,19 @@ import { useEffect } from "react";
 
 const CountryCard = (props) => {
   const countries = useSelector((state) => state.countries);
-const { country } = useParams();
+ const { country } = useParams();
+// const dispatch = useDispatch();  useEffect(() => {
+//   dispatch(actions.searchCountry(country));
+// }, []);
 const { countriesList } = countries;
 // filter the countries array and get the current country
 const currentCountry = countriesList.filter(
    (item) => country === item.name) 
 
-   const [cntry, setCntry] = useState();
 
-   useEffect(() => {
-     setCntry(currentCountry);     
-   }, [currentCountry])
- 
-
-  console.log('current cotry >>>>>>>>> ', cntry)
-
+  //  const dispatch2 = useDispatch();  useEffect(() => {
+  //   dispatch2(actions.fetchAllCountries());
+  // }, []);
   const { theme } = useContext(ThemeContext);
   const {
     flag,
@@ -36,39 +35,32 @@ const currentCountry = countriesList.filter(
     currencies,
     languages,
     borders,
-  } = currentCountry;
+  } = currentCountry.length > 0 && currentCountry[0];//currentCountry[0];
   const [countryBorder, setCountryBorder] = useState([]);//state variable to keep track of the borders(neighbouring countries) of selected country
 
   // The borders prop contains a list of bordering countries. But the values of borders array is not 
   // the country names. Instead it is a 3 letter code representing the country name Ex: 'IND' for India.  
   // we have a method defined inside the services.js that takes the name of the countryCode and returns
   // the corresponding country name.
-  // const fetchCountryNames = async () => {
-  //   const countryNames = await borders.map(async (value) => {
-  //     const name = await services.getCountryNameByCode(value); //this asynchronous call gets us the name of the country given the code
-  //     //console.log("names of borders are", name); // we want to put these names of countryBorders in any array with same name
-  //     //setCountryBorder({ countryNames: [...countryNames, name] }); //
-  //     setCountryBorder(countryNames =>[...countryNames, name])
-
-  //   });
-  // };
+  const fetchCountryNames = async () => {
+    const countryNames = await borders.map(async (value) => {
+      const name = await services.getCountryNameByCode(value); //this asynchronous call gets us the name of the country given the code
+      //console.log("names of borders are", name); // we want to put these names of countryBorders in any array with same name
+      setCountryBorder(countryNames =>[...countryNames, name]);
+    });
+  };
   
-  // useEffect(() => {
-  //   fetchCountryNames();
-  // }, [borders]);// we want to get the countrynames of borders whenever the borders prop changes
-    
-  // languages.map((value, index) => 
-  //   {
-  //     console.log('languages are', value.name); 
-  //     return value.name + " "})
-    
+  useEffect(() => {
+    fetchCountryNames();
+  }, [borders]);// we want to get the countrynames of borders whenever the borders prop changes
  
  console.log('country name from cc ', country);
- //console.log('props from cc', props)
+
   return (
     <div className={`${theme}-theme`} id="country-card">
-      <div className="flag">
-        <Link to="/">Back</Link>
+      <Link to="/">Back</Link>
+      <div className="country-details"> 
+      <div className="flag">       
         <img src={`${flag}`} alt="" />
       </div>
       <div className="other-details">
@@ -104,7 +96,7 @@ const currentCountry = countriesList.filter(
               <label htmlFor="">Top Level Domain: </label>
               {topLevelDomain}
             </p>
-            {/* <p className="span-arr">
+            <p className="span-arr">
               <label className="currencies">Currencies: </label>
               {currencies.map((value, index) => value.name + " ")}{" "}
             </p>
@@ -115,16 +107,17 @@ const currentCountry = countriesList.filter(
                 console.log('languages are', value.name); 
                 return value.name + " "})
               }
-            </p> */}
+            </p>
           </section>
         </div>
 
-        {/* <div className="part3">
+        <div className="part3">
           <label>Borders: </label>
           {countryBorder.map((value) => (
             <span>{value}&nbsp;</span>
           ))}
-        </div> */}
+        </div>
+      </div>
       </div>
     </div>
   );

@@ -131,11 +131,12 @@ html {
     display: grid;
 
     @include desktop {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: auto auto;
     }
-    .flag {
+    .country-details {
       display: grid;      
       @include desktop {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         place-content: center;
       }
 
@@ -146,7 +147,7 @@ html {
           width: 24rem;
         }
       }
-    }
+    
     .other-details {
       display: grid;
       @include desktop {
@@ -179,6 +180,7 @@ html {
         }
       }
     }
+  }
   }
   // end of Country-card
 } // end of wrapper

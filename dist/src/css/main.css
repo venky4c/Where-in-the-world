@@ -116,69 +116,71 @@ html {
 
 @media (min-width: 1440px) {
   .wrapper #country-card {
-    -ms-grid-columns: minmax(0, 1fr) minmax(0, 1fr);
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
   }
 }
 
-.wrapper #country-card .flag {
+.wrapper #country-card .country-details {
   display: -ms-grid;
   display: grid;
 }
 
 @media (min-width: 1440px) {
-  .wrapper #country-card .flag {
+  .wrapper #country-card .country-details {
+    -ms-grid-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     place-content: center;
   }
 }
 
-.wrapper #country-card .flag img {
-  border: 1px solid darkblue;
+.wrapper #country-card .country-details img {
+  border-color: black;
 }
 
 @media (min-width: 1440px) {
-  .wrapper #country-card .flag img {
+  .wrapper #country-card .country-details img {
     height: 100%;
     width: 24rem;
   }
 }
 
-.wrapper #country-card .other-details {
+.wrapper #country-card .country-details .other-details {
   display: -ms-grid;
   display: grid;
 }
 
 @media (min-width: 1440px) {
-  .wrapper #country-card .other-details {
+  .wrapper #country-card .country-details .other-details {
     -ms-grid-rows: auto auto auto;
         grid-template-rows: auto auto auto;
   }
 }
 
-.wrapper #country-card .other-details .part2 {
+.wrapper #country-card .country-details .other-details .part2 {
   display: -ms-grid;
   display: grid;
 }
 
 @media (min-width: 1440px) {
-  .wrapper #country-card .other-details .part2 {
+  .wrapper #country-card .country-details .other-details .part2 {
     -ms-grid-columns: auto auto;
         grid-template-columns: auto auto;
   }
 }
 
-.wrapper #country-card .other-details .part2 .main,
-.wrapper #country-card .other-details .part2 .sub {
+.wrapper #country-card .country-details .other-details .part2 .main,
+.wrapper #country-card .country-details .other-details .part2 .sub {
   display: -ms-grid;
   display: grid;
 }
 
-.wrapper #country-card .other-details .part2 .main label,
-.wrapper #country-card .other-details .part2 .sub label {
+.wrapper #country-card .country-details .other-details .part2 .main label,
+.wrapper #country-card .country-details .other-details .part2 .sub label {
   font-weight: bold;
 }
 
-.wrapper #country-card .other-details .part3 {
+.wrapper #country-card .country-details .other-details .part3 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
