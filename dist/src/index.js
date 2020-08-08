@@ -6,14 +6,15 @@ import store from "./redux/index";
 import App from "./App";
 import { ThemeContextProvider } from "./themeContext";
 import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "./components/routes";
 
 ReactDOM.render(
-  <Router>
+
     <ThemeContextProvider>
       <Provider store={store}>
-        <App />
+        <Routes />
       </Provider>
     </ThemeContextProvider>
-  </Router>,
+  ,
   document.getElementById("root")
 );

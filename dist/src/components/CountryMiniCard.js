@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeContext } from "../themeContext";
 import { useContext } from "react";
-import { Link, Switch, Route } from "react-router-dom";
+import { Link, Switch, Route, Router } from "react-router-dom";
 import CountryCard from "./CountryCard";
 
 const CountryMiniCard = (props) => {
@@ -26,15 +26,11 @@ const CountryMiniCard = (props) => {
     <div className={`${theme}-theme`} id="country-mini-card">
       <div className="country-details">
         <img src={`${baseUrl.concat(flagName)}`} alt="dummy" />
-        <Link to="/countrycard">
+        <Link to={`/country/${name}`}>
           <h2>{name}</h2>
         </Link>
         {/* HERE WE NEED TO SHOW ONLY INDIVIDUAL COUNTRY, not the full list */}
-        <Switch>
-          <Route path="/countrycard">
-            <CountryCard />
-          </Route>
-        </Switch>
+        
         <p>
           <label htmlFor="">Population: </label>
           {population}
