@@ -1,4 +1,3 @@
-import React from "react";
 import { takeLatest, put } from "redux-saga/effects";
 import * as actions from "./actions";
 import {
@@ -11,7 +10,7 @@ import {
 function* fetchCountries(action) {
   try {
     const COUNTRIES = yield fetchAllCountries();
-    //console.log("FROM sage", COUNTRIES);
+    //console.log("FROM saga", COUNTRIES);
     yield put({
       type: actions.FETCHED_ALL_COUNTRIES_WITH_SUCCESS,
       payload: COUNTRIES,
@@ -27,7 +26,9 @@ function* searchForCountriesSaga(action) {
       type: actions.SEARCHED_COUNTRY_WITH_SUCCESS,
       payload: COUNTRIES,
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log('error from sagaaaaaaaaa', error)
+  }
 }
 
 function* searchForCountriesByRegionSaga(action) {

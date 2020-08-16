@@ -1,6 +1,6 @@
-import React from "react";
+
 const baseUrl = "https://restcountries.eu/rest/v2/";
-//restcountries.eu/rest/v2/name/{name}
+
 
 export const fetchAllCountries = async () => {
   const response = await fetch(baseUrl + "all");
@@ -9,8 +9,14 @@ export const fetchAllCountries = async () => {
 
 export const searchForCountries = async (name) => {
   //console.log("From services.js ", name);
-  const response = await fetch(baseUrl + `name/${name}`);
-  return response.json();
+  try {
+    const response = await fetch(baseUrl + `name/${name}`);
+  const countries = await response.json();
+  return countries;
+  } catch (error) {
+    console.error('error service issssssssssss',error);
+    return error;
+  }  
 };
 
 export const searchForCountriesByRegion = async (region) => {
@@ -20,7 +26,6 @@ export const searchForCountriesByRegion = async (region) => {
 
 export const getCountryNameByCode = async (code) => {
   const response = await fetch(baseUrl + `alpha/${code}`);
-  const country = await response.json();
-  //console.log("country names from services ", country);
+  const country = await response.json();  
   return country.name;
 };
