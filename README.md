@@ -1,4 +1,4 @@
-# Rest-Countries-Api
+# Where in the world
 LIVE LINK: https://hopeful-lovelace-275308.netlify.app/
 
 React Redux app to show details of a country selected by user, filtered by continents
